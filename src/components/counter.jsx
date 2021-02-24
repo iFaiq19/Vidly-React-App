@@ -2,6 +2,7 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 0,
+    imgURL: 'https://picsum.photos/250'
   };
   render() {
     return (
@@ -13,13 +14,15 @@ class Counter extends Component {
         <button>Click Me</button>
         <br />
         <span>{this.checkCount()}</span>
+        <br/>
+        <img src={this.state.imgURL} alt=""/>
       </React.Fragment>
     );
   }
 
   checkCount() {
     const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    return count === 0 ? <h2>Zero</h2> : <h2>{count}</h2>;
   }
 }
 
