@@ -11,12 +11,15 @@ class Counter extends Component {
         <span>{10 + 9}</span>
         <br />
         <button>Click Me</button>
+        <br />
+        <span>{this.checkCount()}</span>
       </React.Fragment>
     );
   }
 
   checkCount() {
-    return this.state.count === 0 ? "Zero" : this.state.count;
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
   }
 }
 
