@@ -1,15 +1,5 @@
 import React, { Component } from "react";
 class Counter extends Component {
-  // state = {
-  //   value: this.props.counter.value,
-  // };
-
-  // styles = {
-  //   fontSize: 14,
-  //   fontWeight: "bold",
-  //   width: 70,
-  // };
-
   render() {
     return (
       <div>
@@ -33,14 +23,6 @@ class Counter extends Component {
       </div>
     );
   }
-
-  // incrementCount = () => {
-  //   this.setState({ value: this.state.value + 1 });
-  // };
-
-  // decrementCount = () => {
-  //   this.setState({ value: this.state.value - 1 });
-  // };
 
   getBadge() {
     let classes = "badge m-2 badge-";
