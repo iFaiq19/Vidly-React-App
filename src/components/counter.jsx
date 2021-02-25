@@ -8,14 +8,14 @@ class Counter extends Component {
         </span>
         <span>
           <button
-            className="btn btn-secondary btn-sm m-2"
+            className="btn btn-primary btn-sm m-2"
             onClick={()=> this.props.onIncrement(this.props.counter)}
           >
             Increment
           </button>
           <button
             className="btn btn-danger btn-sm m-2"
-            onClick={()=> this.props.onDecrement(this.props.counter)}
+            onClick={()=> this.props.onDelete(this.props.counter.id)}
           >
             Delete
           </button>

@@ -20,6 +20,11 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleDelete = (counterID) => {
+    const newCounters = this.state.counters.filter((c) => c.id !== counterID);
+    this.setState({ counters: newCounters });
+  };
+
   handleReset = () => {
     const newCounters = this.state.counters.map((c) => {
       c.value = 0;
