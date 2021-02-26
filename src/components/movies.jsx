@@ -31,7 +31,7 @@ class Movies extends Component {
   render() {
     const { length: count } = this.state.movies;
     const { pageSize, currentPage, movies } = this.state;
-    if (count === 0) return <p>There are no movies in the database</p>;
+    if (count === 0) return <p className="m-2">There are no movies in the database</p>;
 
     const newMovies = paginate(movies, currentPage, pageSize);
 
@@ -52,10 +52,10 @@ class Movies extends Component {
           <tbody>
             {newMovies.map((movie) => (
               <tr key={movie._id}>
-                <td>{movie.title}</td>
-                <td>{movie.genre.name}</td>
-                <td>{movie.numberInStock}</td>
-                <td>{movie.dailyRentalRate}</td>
+                <td style={{width:300}}>{movie.title}</td>
+                <td style={{width:200}}>{movie.genre.name}</td>
+                <td style={{width:150}}>{movie.numberInStock}</td>
+                <td style={{width:150}}>{movie.dailyRentalRate}</td>
                 <td>
                   <Like
                     liked={movie.liked}
