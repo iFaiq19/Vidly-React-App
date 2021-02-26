@@ -1,21 +1,19 @@
 import React from "react";
 import Counter from "./counter";
 
-const Counters = (props) => {
+//Stateless Functional Component
+const Counters = ({ onReset, counters, onDelete, onIncrement }) => {
   return (
     <div>
-      <button
-        onClick={props.onReset}
-        className="btn-primary btn btn-sm m-2"
-      >
+      <button onClick={onReset} className="btn-primary btn btn-sm m-2">
         Reset
       </button>
-      {props.counters.map((counter) => (
+      {counters.map((counter) => (
         <Counter
           key={counter.id}
           counter={counter}
-          onDelete={props.onDelete}
-          onIncrement={props.onIncrement}
+          onDelete={onDelete}
+          onIncrement={onIncrement}
         ></Counter>
       ))}
     </div>
