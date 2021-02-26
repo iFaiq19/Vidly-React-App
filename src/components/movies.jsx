@@ -17,7 +17,7 @@ class Movies extends Component {
     const index = movies.indexOf(movie);
     movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
-    this.setState({movies});
+    this.setState({ movies });
   };
 
   render() {
