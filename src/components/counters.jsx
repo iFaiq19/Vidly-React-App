@@ -2,7 +2,13 @@ import React from "react";
 import Counter from "./counter";
 
 //Stateless Functional Component
-const Counters = ({ onReset, counters, onDelete, onIncrement }) => {
+const Counters = ({
+  onReset,
+  counters,
+  onDelete,
+  onIncrement,
+  onDecrement,
+}) => {
   return (
     <div>
       <button onClick={onReset} className="btn-primary btn btn-sm m-2">
@@ -14,6 +20,7 @@ const Counters = ({ onReset, counters, onDelete, onIncrement }) => {
           counter={counter}
           onDelete={onDelete}
           onIncrement={onIncrement}
+          onDecrement={onDecrement}
         ></Counter>
       ))}
     </div>
