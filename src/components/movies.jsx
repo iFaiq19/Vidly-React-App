@@ -42,8 +42,9 @@ class Movies extends Component {
     if (count === 0)
       return <p className="m-2">There are no movies in the database</p>;
 
-
-    const filteredMovies = selectedGenre ? movies.filter(m=>m.genre._id === selectedGenre._id) : movies  
+    const filteredMovies = selectedGenre
+      ? movies.filter((m) => m.genre._id === selectedGenre._id)
+      : movies;
     const newMovies = paginate(filteredMovies, currentPage, pageSize);
 
     return (
