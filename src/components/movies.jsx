@@ -4,7 +4,7 @@ import { getGenres } from "../servicesNR/fakeGenreServices";
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
 import paginate from "../utils/paginate";
-import MoviesTable from "../components/moviesTable"
+import MoviesTable from "../components/moviesTable";
 
 class Movies extends Component {
   state = {
@@ -15,10 +15,9 @@ class Movies extends Component {
     selectedGenre: "Action",
   };
 
-  componentDidMount()
-  {
-    const genres = [{name: "All Genres"},...getGenres()]
-    this.setState({movies:getMovies(), genres})
+  componentDidMount() {
+    const genres = [{ name: "All Genres" }, ...getGenres()];
+    this.setState({ movies: getMovies(), genres });
   }
 
   handleDelete = (movie) => {
@@ -39,18 +38,25 @@ class Movies extends Component {
   };
 
   handleGenre = (genre) => {
-    this.setState({ selectedGenre: genre, currentPage:1 });
+    this.setState({ selectedGenre: genre, currentPage: 1 });
   };
 
   render() {
     const { length: count } = this.state.movies;
-    const { pageSize, currentPage, movies:newMovies, genres, selectedGenre } = this.state;
+    const {
+      pageSize,
+      currentPage,
+      movies: newMovies,
+      genres,
+      selectedGenre,
+    } = this.state;
     if (count === 0)
       return <p className="m-2">There are no movies in the database</p>;
 
-    const filteredMovies = selectedGenre && selectedGenre._id
-      ? newMovies.filter((m) => m.genre._id === selectedGenre._id)
-      : newMovies;
+    const filteredMovies =
+      selectedGenre && selectedGenre._id
+        ? newMovies.filter((m) => m.genre._id === selectedGenre._id)
+        : newMovies;
     const movies = paginate(filteredMovies, currentPage, pageSize);
 
     return (
@@ -65,9 +71,9 @@ class Movies extends Component {
         <div className="col">
           <p className="m-2">Showing {filteredMovies.length} movies</p>
           <MoviesTable
-          movies = {movies}
-          onLike = {this.handleLike}
-          onDelete = {this.handleDelete}
+            movies={movies}
+            onLike={this.handleLike}
+            onDelete={this.handleDelete}
           ></MoviesTable>
           <Pagination
             itemsCount={filteredMovies.length}
