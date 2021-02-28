@@ -12,10 +12,11 @@ class TableHeader extends Component {
     this.props.onSort(sortColumn);
   }
   render() {
+    const { columns } = this.props;
     return (
       <thead>
         <tr>
-          {this.props.columns.map((column) => (
+          {columns.map((column) => (
             <th
               style={{ cursor: "pointer" }}
               key={column.path || column.key}
