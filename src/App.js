@@ -15,6 +15,7 @@ function App() {
         <Route path="/rentals" component={Rentals}></Route>
         <Route path="/not-found" component={notFound}></Route>
         <Redirect from="/" exact to="/movies"></Redirect>
+        <Redirect to="/not-found"></Redirect>
       </Switch>
     </main>
   );
