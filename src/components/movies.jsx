@@ -84,31 +84,31 @@ class Movies extends Component {
 
     const { totalCount, data } = this.getPagedData();
     return (
-      <div className="container row mt-2">
-        <div className="col-2 mt-3">
-          <ListGroup
-            items={genres}
-            onGenreSelect={this.handleGenre}
-            selectedGenre={selectedGenre}
-          ></ListGroup>
+        <div className="container row mt-2">
+          <div className="col-2 mt-3">
+            <ListGroup
+              items={genres}
+              onGenreSelect={this.handleGenre}
+              selectedGenre={selectedGenre}
+            ></ListGroup>
+          </div>
+          <div className="col">
+            <p className="m-2">Showing {totalCount} movies</p>
+            <MoviesTable
+              movies={data}
+              sortColumn={sortColumn}
+              onLike={this.handleLike}
+              onDelete={this.handleDelete}
+              onSort={this.handleSort}
+            ></MoviesTable>
+            <Pagination
+              itemsCount={totalCount}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={this.handlePageChange}
+            ></Pagination>
+          </div>
         </div>
-        <div className="col">
-          <p className="m-2">Showing {totalCount} movies</p>
-          <MoviesTable
-            movies={data}
-            sortColumn={sortColumn}
-            onLike={this.handleLike}
-            onDelete={this.handleDelete}
-            onSort={this.handleSort}
-          ></MoviesTable>
-          <Pagination
-            itemsCount={totalCount}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            onPageChange={this.handlePageChange}
-          ></Pagination>
-        </div>
-      </div>
     );
   }
 }
