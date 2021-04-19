@@ -8,7 +8,12 @@ class LoginForm extends Component {
   };
 
   validate = () => {
-    return { Username: "Username is required." };
+    const errors = {};
+    const { username, password } = this.state.account;
+    if (username.trim() === "") errors.username = "Username is required.";
+    if (password.trim() === "") errors.password = "Password is required.";
+
+    return Object.keys(errors).length === 0 ? null : errors;
   };
 
   handleSubmit = (e) => {
