@@ -33,8 +33,10 @@ class Movies extends Component {
   handleLike = (movie) => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
+
     movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
+
     this.setState({ movies });
   };
 
@@ -92,6 +94,7 @@ class Movies extends Component {
       searchQuery,
       sortColumn,
     } = this.state;
+
     if (count === 0)
       return <p className="m-2">There are no movies in the database</p>;
 
@@ -105,15 +108,19 @@ class Movies extends Component {
             selectedGenre={selectedGenre}
           ></ListGroup>
         </div>
+
         <div className="col">
           <Link to="/movies/new" className="btn btn-primary mt-2 mb-2">
             New Movie
           </Link>
+
           <p className="m-2">Showing {totalCount} movies</p>
+
           <SearchBox
             onChange={this.handleSearch}
             value={searchQuery}
           ></SearchBox>
+
           <MoviesTable
             movies={data}
             sortColumn={sortColumn}
@@ -121,6 +128,7 @@ class Movies extends Component {
             onDelete={this.handleDelete}
             onSort={this.handleSort}
           ></MoviesTable>
+
           <Pagination
             itemsCount={totalCount}
             pageSize={pageSize}
