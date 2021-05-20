@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { getMovies } from "../services/movieServices";
-import { getGenres } from "../services/genreServices";
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
 import paginate from "../utils/paginate";
 import MoviesTable from "./moviesTable";
 import SearchBox from "./common/searchBox";
 import { Link } from "react-router-dom";
+import { getMovies } from "../services/movieServices";
+import { getGenres } from "../services/genreServices";
 import _ from "lodash";
 
 class Movies extends Component {
