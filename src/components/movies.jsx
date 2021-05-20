@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMovies } from "../services/fakeMovieServices";
+import { getMovies } from "../services/movieServices";
 import { getGenres } from "../services/genreServices";
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
@@ -23,7 +23,9 @@ class Movies extends Component {
   async componentDidMount() {
     const { data } = await getGenres();
     const genres = [{ _id: "", name: "All Genres" }, ...data];
-    this.setState({ movies: getMovies(), genres });
+
+    const { data: movies } = await getMovies();
+    this.setState({ movies, genres });
   }
 
   handleDelete = (movie) => {
