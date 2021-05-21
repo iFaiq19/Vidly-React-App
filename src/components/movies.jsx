@@ -5,8 +5,8 @@ import paginate from "../utils/paginate";
 import MoviesTable from "./moviesTable";
 import SearchBox from "./common/searchBox";
 import { Link } from "react-router-dom";
-import { getMovies, deleteMovie } from "../services/movieServices";
-import { getGenres } from "../services/genreServices";
+import { getMovies, deleteMovie } from "../services/movieService";
+import { getGenres } from "../services/genreService";
 import { toast } from "react-toastify";
 import _ from "lodash";
 
