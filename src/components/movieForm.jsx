@@ -32,20 +32,28 @@ class MovieForm extends Form {
       .label("Daily Rental Rate"),
   };
 
-  async componentDidMount() {
+  async populateGenres() {
     const { data: genres } = await getGenres();
     this.setState({ genres });
+  }
 
-    const movieID = this.props.match.params.id;
-    if (movieID === "new") return;
-
+  async populateMovies() {
     try {
+      const movieID = this.props.match.params.id;
+      if (movieID === "new") return;
+
       const { data: movie } = await getMovie(movieID);
       this.setState({ data: this.mapToViewModel(movie) });
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
         this.props.history.replace("/not-found");
     }
+  }
+
+  async componentDidMount() {
+    await this.populateGenres();
+
+    await this.populateMovies();
   }
 
   mapToViewModel(movie) {
@@ -57,8 +65,8 @@ class MovieForm extends Form {
       dailyRentalRate: movie.dailyRentalRate,
     };
   }
-  doSubmit = () => {
-    saveMovie(this.state.data);
+  doSubmit = async () => {
+    await saveMovie(this.state.data);
     this.props.history.push("/movies");
   };
   render() {
